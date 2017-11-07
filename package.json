@@ -4,7 +4,21 @@
   "description": "Just a simple library :)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint src",
+    "prepush": "npm run lint",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "context",
+      "mount",
+      "jest"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,5 +34,14 @@
   "bugs": {
     "url": "https://github.com/MarcelLZ/js-tdd-course/issues"
   },
-  "homepage": "https://github.com/MarcelLZ/js-tdd-course#readme"
+  "homepage": "https://github.com/MarcelLZ/js-tdd-course#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.10.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
+    "standard": "^10.0.3"
+  }
 }
